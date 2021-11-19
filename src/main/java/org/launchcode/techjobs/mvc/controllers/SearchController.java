@@ -22,5 +22,7 @@ public class SearchController {
     }
 
     // TODO #3 - Create a handler to process a search request and render the updated search view.
+    // Similar to the columns findAll hack; find by column and value
+    // add attributes like I normally would
 
 }
