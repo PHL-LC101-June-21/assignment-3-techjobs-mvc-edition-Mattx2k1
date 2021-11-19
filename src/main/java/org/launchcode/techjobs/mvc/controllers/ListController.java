@@ -59,6 +59,13 @@ public class ListController {
         }
         model.addAttribute("jobs", jobs);
 
+//        do this in thymeleaf format
+
+//        for(Job job : jobs) {
+//            System.out.println(job.getName());
+//            System.out.println(job.getEmployer());
+//        }
+
         return "list-jobs";
     }
 }
