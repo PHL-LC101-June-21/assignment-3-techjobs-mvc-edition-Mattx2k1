@@ -13,13 +13,12 @@
     <!-- TODO #1 - Use a loop to display job results in a table. -->
     <table>
         <tr th:each="job : ${jobs}">
-            <td><p th:text="${job.getName()}"></p>
-            <td><p th:text="${job.getEmployer()}"></p>
-            <td><p th:text="${job.getLocation()}"></p>
-            <p><p th:text="${job.getPositionType()}"></p>
-            <td><p th:text="${job.getId()}"></p>
-            <td><p th:text="${job.getCoreCompetency()}"></p>
-            </td>
+            <td><p th:text="${job.getId()}"></p></td>
+            <td><p th:text="${job.getName()}"></p></td>
+            <td><p th:text="${job.getEmployer()}"></p></td>
+            <td><p th:text="${job.getLocation()}"></p></td>
+            <td><p th:text="${job.getPositionType()}"></p></td>
+            <td><p th:text="${job.getCoreCompetency()}"></p></td>
         </tr>
     </table>
 
