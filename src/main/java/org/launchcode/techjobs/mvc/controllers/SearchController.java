@@ -31,19 +31,22 @@ public class SearchController {
     // Similar to the columns findAll hack; find by column and value
     // add attributes like I normally would
 
-    @PostMapping("results")
+    @PostMapping(value="results")
     public String displaySearchResults(Model model, @RequestParam String searchType, @RequestParam String searchTerm) {
-        ArrayList<Job> jobs;
-        if (searchType.equals("all") || searchType.equals("")) {
-            jobs = JobData.findAll();
+        if (searchType.equals("all") && (!(searchTerm.isEmpty())) && (!(searchTerm.equals("all")))) {
+            model.addAttribute("jobs", JobData.findByValue(searchTerm));
+            model.addAttribute("title", searchTerm);
 
-        } else {
-            jobs = JobData.findByColumnAndValue(searchType, searchTerm);
+        } else if (searchType.equals("all") || searchTerm.isEmpty() || searchTerm.equals("all"))  {
+
+            model.addAttribute("jobs", JobData.findAll());
+            model.addAttribute("title", "All Jobs");
         }
-
-        model.addAttribute("jobs", jobs);
+        else {
+            model.addAttribute("jobs", JobData.findByColumnAndValue(searchType, searchTerm));
+            model.addAttribute("title", searchTerm);
+        }
         model.addAttribute("columns", columnChoices);
-
         return "search";
     }
 
